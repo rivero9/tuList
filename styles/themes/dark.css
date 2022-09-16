@@ -1,0 +1,100 @@
+:root {
+    --cWhite: #f5f5f5;
+    --cDark: #25273a;
+    --cNeon: #0cd /* #2bf3e9; */;
+}
+body {
+    background: var(--cDark);
+}
+* {
+    color: var(--cDark);
+}
+/* nav */
+.nav {
+    background: var(--cNeon);
+}
+.nav_config_title {
+    color: var(--cNeon);
+}
+/* list */
+.container_title h4 {
+    color: var(--cWhite);
+}
+.container_list_index {
+    border-top: 1px solid var(--cNeon);
+    border-bottom: 1px solid var(--cNeon);
+}
+.container_list_index::after {
+    background: var(--cNeon);
+}
+/* --- outside --- */
+.outside {
+    background: url('../icons/outside.png') no-repeat;
+    background-size: 100%;
+}
+/* --- list-load --- */
+.container-loader {
+    background: var(--cDark);
+}
+.container-loader .loader {
+    border: 4px solid #057;
+    border-top-color: #0cd;
+}
+/* --- msg --- */
+.container_msg {
+    color: var(--cNeon);
+}
+/* --- item-list --- */
+.container_list_item {
+    background: var(--cNeon);
+}
+/* --- btn ---*/
+.container-tools_add-item-list {
+    background: var(--cNeon);
+}
+/* --- clear-list --- */
+.container-tools_clear-list {
+    background: url('../icons/clear.png') no-repeat;
+    background-size: 100%;
+}
+/* --- modal --- */
+.modal {
+    box-shadow: 0 0 15px #0cd3;
+}
+.modal_title {
+    color: var(--cNeon);
+}
+.modal_create-item .label-input::after {
+    border-bottom: 3px solid #057;
+}
+.modal_create-item #input-title {
+    border-bottom: 1px solid var(--cNeon);
+}
+#input-title:focus + .label-input span, #input-title:valid + .label-input span {
+    font-size: 12px;
+    color: #057;
+    transform: translateY(-220%);
+}
+/* --- create-item ---*/
+.modal_create_btn {
+    background: var(--cNeon);
+    color: var(--cDark);
+    border-bottom: 3px solid #078;
+}
+.modal_create_btn:hover {
+    background: #0ab;
+}
+/* --------- categories --------- */
+.container_categories .category {
+    background: var(--cNeon);
+    border-left: 4px solid #057;
+}
+.container_categories .category.drag {
+    border-left: 4px solid #057;
+}
+.container_categories .category.selection {
+    background: #0bc;
+}
+.container_categories .category:hover {
+    background: #0ab;
+}

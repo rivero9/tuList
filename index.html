@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>toList | controla tu dia</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script> -->
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/themes/yellow.css" id="theme">
+    <script>
+        const style = localStorage.getItem('theme');
+        const theme = document.createElement('LINK');
+        theme.setAttribute('id','theme');
+        theme.setAttribute('rel','stylesheet');
+        style !== null
+            ? theme.setAttribute('href',`styles/themes/${style}.css`)
+            : ( theme.setAttribute('href',`styles/themes/yellow.css`),
+                localStorage.setItem('theme','yellow'));
+        document.head.appendChild(theme);
+        const temaAntiguo = document.getElementById('theme');
+        document.head.removeChild(temaAntiguo);
+    </script>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav_title">
+            <h4>toList</h4>
+        </div>
+        <div class="nav_bars">
+            <svg id="bars" ria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path>
+            </svg>
+        </div>
+        <div class="nav_config">
+            <span class="nav_config_close"></span>
+            <h6 class="nav_config_title">CONFIGURACIÓN</h6>
+            <div class="nav_config_change-theme">
+                <h5 class="nav_config_change-theme_title">Cambiar tema:</h5>
+                <div class="options-container">
+                    <div class="option">
+                        <div class="option-orange change-theme" id="red"></div>
+                        <p class="option_title">Rojo</p>
+                    </div>
+                    <div class="option">
+                        <div class="option-green change-theme" id="green"></div>
+                        <p class="option_title">Verde</p>
+                    </div>
+                    <div class="option">
+                        <div class="option-yellow change-theme" id="yellow"></div>
+                        <p class="option_title">Amarillo</p>
+                    </div>
+                    <div class="option">
+                        <div class="option-dark change-theme" id="dark"></div>
+                        <p class="option_title">Oscuro</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class="container">
+        <div class="container_title">
+            <h4>CATEGORIAS</h4>
+        </div>
+        <div class="container_categories">
+            <div class="category" id="list-compras" data-id="1">
+                <div class="category_title">
+                    <h3>Compras</h3>
+                </div>
+            </div>
+            <div class="category" id="list-hogar" data-id="2">
+                <div class="category_title">
+                    <h3>Hogar</h3>
+                </div>
+            </div>
+            <div class="category" id="list-tareas" data-id="3">
+                <div class="category_title">
+                    <h3>Tareas</h3>
+                </div>
+            </div>
+            <div class="category" id="list-otros" data-id="4">
+                <div class="category_title">
+                    <h3>Otros</h3>
+                </div>
+            </div>
+            <div class="container-loader seleccionado" draggable="true">
+                <span class="loader"></span>
+            </div>
+        </div>
+    </section>
+    <script src="main.js"></script>
+</body>
+</html>

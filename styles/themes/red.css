@@ -1,7 +1,7 @@
 :root {
     --cWhite: #f5f5f5;
     --cDark: #25273a;
-    --cFirst:  #FF5733 ;
+    --cFirst:  #FF5733;
 }
 body {
     background: var(--cWhite);

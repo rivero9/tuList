@@ -9,24 +9,57 @@
     <link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/themes/yellow.css" id="theme">
+    <link rel="stylesheet" href="styles/welcome.css">
+</head>
+<body>
     <script>
+        const temaAntiguo = document.getElementById('theme');
+        document.head.removeChild(temaAntiguo);
         const style = localStorage.getItem('theme');
         const theme = document.createElement('LINK');
         theme.setAttribute('id','theme');
         theme.setAttribute('rel','stylesheet');
-        style !== null
-            ? theme.setAttribute('href',`styles/themes/${style}.css`)
-            : ( theme.setAttribute('href',`styles/themes/yellow.css`),
-                localStorage.setItem('theme','yellow'));
-        document.head.appendChild(theme);
-        const temaAntiguo = document.getElementById('theme');
-        document.head.removeChild(temaAntiguo);
+        if (style !== null) {
+            theme.setAttribute('href',`styles/themes/${style}.css`);
+            document.head.appendChild(theme);
+        } else {
+            theme.setAttribute('href',`styles/themes/yellow.css`),
+            localStorage.setItem('theme','yellow');
+            document.head.appendChild(theme);
+            const welcome = document.createElement('DIV');
+            welcome.classList.add('welcome-container');
+            const titleFP = document.createElement('H2');
+            titleFP.classList.add('welcome_title-first');
+            titleFP.textContent = "tu";
+            const titleSP = document.createElement('H2');
+            titleSP.classList.add('welcome_title-second');
+            const spanTlt = document.createElement('SPAN');
+            spanTlt.textContent = "ist";
+            const titleAfter = document.createElement('SPAN');
+            titleAfter.classList.add('after');
+            titleAfter.textContent = "a";
+            const title = document.createElement('H1');
+            title.classList.add('welcome_title');
+            title.textContent = "Bienvenid@";
+            // append-child
+            welcome.appendChild(title);
+            welcome.appendChild(titleFP);
+            titleSP.appendChild(spanTlt);
+            titleSP.appendChild(titleAfter);
+            welcome.appendChild(titleSP);
+            document.body.appendChild(welcome);
+            welcome.addEventListener('click',()=>{
+                titleAfter.style.animation = "welcome 1.2s ease-out forwards";
+                welcome.style.animation = "outside-welcome 0.4s 1.15s ease forwards";
+                setTimeout(()=>{
+                    document.body.removeChild(welcome);
+                },1650);
+            })
+        };
     </script>
-</head>
-<body>
     <nav class="nav">
         <div class="nav_title">
-            <h4>toList</h4>
+            <h4>tuList</h4>
         </div>
         <div class="nav_bars">
             <svg id="bars" ria-hidden="true" focusable="false" data-prefix="fas" data-icon="bars" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -49,7 +82,7 @@
                     </div>
                     <div class="option">
                         <div class="option-yellow change-theme" id="yellow"></div>
-                        <p class="option_title">Amarillo</p>
+                        <p class="option_title">Anaranjado</p>
                     </div>
                     <div class="option">
                         <div class="option-dark change-theme" id="dark"></div>
@@ -88,7 +121,6 @@
                 <span class="loader"></span>
             </div>
         </div>
-    </section>
-    <script src="main.js"></script>
+    </section><script src="main.js"></script>
 </body>
 </html>

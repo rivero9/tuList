@@ -3,6 +3,9 @@
     --cDark: #25273a;
     --cNeon: #0cd /* #2bf3e9; */;
 }
+.welcome_title-second::before {
+    color: var(--cNeon);
+}
 body {
     background: var(--cDark);
 }

@@ -1,5 +1,15 @@
 "use strict";
 
+// welcome
+const welcome = document.querySelector('.welcome-container');
+welcome.addEventListener('click',()=>{
+    const antion = document.querySelector('.after');
+    antion.style.animation = "welcome 1.2s ease-out forwards";
+    welcome.style.animation = "outside-welcome 0.4s 1.15s ease forwards";
+    setTimeout(()=>{
+        document.body.removeChild(welcome);
+    },1650);    
+})
 // data-base 
 const IDBrequest = indexedDB.open('todo-list',1);
 IDBrequest.addEventListener('upgradeneeded',()=>{
@@ -446,3 +456,30 @@ const newItem = (save,check,title,itemDate,key) =>{
         openModalAddItem('Editar', title.trim(), "ACTUALIZAR", titleItem,update);        
     })
 }
+// privacy
+const btnPrv = document.querySelector('.nav_config_privacy_title');
+btnPrv.addEventListener('click',()=>{
+    const container = document.querySelector('.nav_config');
+    const privacy = document.createElement('DIV');
+    privacy.classList.add('privacy-container');
+    const outside = document.createElement('DIV');
+    outside.classList.add('outside-privacy');
+    const title = document.createElement('H2');
+    title.classList.add('privacy_title');
+    title.textContent = "Privacidad";
+    const p = document.createElement('P');
+    p.textContent = `
+        Ninguno de los datos que usted ingresa en esta aplicación web son compartidos con cualquier
+        otra entidad. Los datos son guardados únicamente en la memoria de su navegador y los puede
+        borrar cuando quiera entrando en una lista y presionando el boton de la derecha, limpiar.
+    `;
+    // append-child
+    privacy.appendChild(outside);
+    privacy.appendChild(title);
+    privacy.appendChild(p);
+    container.appendChild(privacy);
+    // events
+    outside.addEventListener('click',()=>{
+        container.removeChild(privacy);        
+    })
+})

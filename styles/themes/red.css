@@ -3,6 +3,9 @@
     --cDark: #25273a;
     --cFirst:  #FF5733;
 }
+.welcome_title-second::before {
+    color: var(--cFirst);
+}
 body {
     background: var(--cWhite);
 }

@@ -110,6 +110,67 @@ body {
     font-size: 12px;
     font-weight: 100;
 }
+.nav_config_note {
+    padding: 20px;
+    width: 100%;
+}
+.nav_config_note p b {
+    color: var(--cWhite);
+    font-size: 20px;
+    margin: 0 10px 0 0;
+}
+.nav_config_note p {
+    color: var(--cWhite);
+    font-size: 14px;
+    font-family: sans-serif;
+    text-align: justify;
+}
+.nav_config_privacy {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+}
+.nav_config_privacy_title {
+    color: #25b;
+    text-decoration: underline;
+    font-size: 15px;
+    cursor: pointer;
+}
+.privacy-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--cWhite);
+    padding: 20px;
+    text-align: center;
+    opacity: 0;
+    animation: show 0.4s ease-in forwards;
+}
+.outside-privacy {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    background: url('icons/close.png') no-repeat ;
+    background-size: 100%;
+    cursor: pointer;
+    filter: saturate(1);
+}
+.privacy_title {
+    font-size: 25px;
+    color: #48f;
+    font-family: sans-serif;
+}
+.privacy-container p {
+    margin: 10px 0 0 0;
+    padding: 15px;
+    text-align: justify;
+    letter-spacing: 2px;
+    font-family: sans-serif;
+}
 /* --- outside --- */
 .outside {
     display: inline-block;

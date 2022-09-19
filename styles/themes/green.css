@@ -22,11 +22,11 @@ body {
     color: var(--cDark);
 }
 .container_list_index {
-    border-top: 1px solid var(--cFirst);
-    border-bottom: 1px solid var(--cFirst);
+    border-top: 1px solid var(--cDark);
+    border-bottom: 1px solid var(--cDark);
 }
 .container_list_index::after {
-    background: var(--cFirst);
+    background: var(--cDark);
 }
 /* --- outside --- */
 .outside {

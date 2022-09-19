@@ -1,5 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,700&display=swap');
 * {
-    font-family: sans-serif;
+    font-family: 'Nunito', sans-serif;
 }
 /* nav */
 .nav {
@@ -15,7 +16,6 @@
 }
 .nav_title h4 {
     font-size: 38px;
-    font-family: Bell MT;
 }
 .nav_bars {
     width: 20px;
@@ -25,7 +25,7 @@
 }
 /* --- config --- */
 body {
-    overflow: hidden;
+    overflow-x: hidden;
 }
 .nav_config {
     position: absolute;
@@ -124,7 +124,7 @@ body {
 }
 .container_title h4 {
     text-align: center;
-    font-size: 27px;
+    font-size: 35px;
     letter-spacing: 1px;
 }
 .container_list {
@@ -230,7 +230,7 @@ body {
     cursor: pointer;
 }
 .container_list_item_title {
-    font-size: 20px;
+    font-size: 23px;
     width: 70%;
     overflow: hidden;
     white-space: nowrap;
@@ -317,6 +317,7 @@ body {
     background: transparent;
     border: transparent;
     outline: transparent;
+    font-family: sans-serif;
     font-size: 24px;
     color: var(--cDark);
     cursor: inherit;
@@ -468,6 +469,7 @@ body {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    font-size: 23px;
 }
 .container_categories .category.drag {
     opacity: 0;

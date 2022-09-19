@@ -43,7 +43,7 @@ const clearObj = (base,key) =>{
     IDBdata.delete(key);
 }
 const readItems = (base) =>{
-    const items = document.querySelector('.container_list_items-container');
+    const itemsContainer = document.querySelector('.container_list_items-container');
     const store = document.querySelector('.container_list').id;
     const db = IDBrequest.result;
     let IDBtransaction = db.transaction(base,"readwrite");
@@ -59,9 +59,11 @@ const readItems = (base) =>{
                     cursor.result.value.date,
                     cursor.result.value.key
               ),cursor.result.continue())
-            : stopLoad('list');
+            : ( stopLoad('list'),
+                draggeable(itemsContainer,"compras"),
+                updateStatus());
     })
-    if (items.childElementCount == 0) msg('No hay nada agregado');
+    if (itemsContainer.childElementCount == 0) msg('No hay nada agregado');
     cursor.addEventListener('error',()=>{
         stopLoad();
         msg('error');
@@ -145,6 +147,8 @@ const draggeable = (list,storage)=>{
         group: storage,
         store: {
             set: sortable=>{
+                updateStatus();
+                const index = document.getElementById('no-verify');
                 const array = sortable.toArray();
                 localStorage.setItem(sortable.options.group.name,array.join('|'));
             },
@@ -156,12 +160,12 @@ const draggeable = (list,storage)=>{
     });
 }
 const list = document.querySelector('.container_categories');
-// draggeable(list,"categories");
+draggeable(list,"categories");
 stopLoad('categories');
 const categories = document.querySelectorAll('.category');
 categories.forEach(category =>{
     category.addEventListener('click',()=>{
-        openCategory(category.id);
+        openCategory(category.id)
     })
 });
 stopLoad('categories');
@@ -183,7 +187,6 @@ const openCategory = name =>{
     indexContainer.classList.add('container_list_index');
     const itemsContainer = document.createElement('DIV');
     itemsContainer.classList.add('container_list_items-container');
-    // draggeable(itemsContainer,name.split('-')[1]);
     const toolsContainer = document.createElement('DIV');
     toolsContainer.classList.add('container-tools');
     const addItemContainer = document.createElement('DIV');
@@ -220,7 +223,6 @@ const openCategory = name =>{
     clearListContainer.addEventListener('click',()=>{
         clear();
     })
-    // SortableJS
 }
 const openPanel = ()=>{
     const container = document.createElement('SECTION');
@@ -248,7 +250,7 @@ const openPanel = ()=>{
         })
     });
     // SortableJS
-    // draggeable(panel,"categories");
+    draggeable(panel,"categories");
 };
 const addCategory = (container,name,db,id)=>{
     const category = document.createElement('DIV');
@@ -328,6 +330,14 @@ const openModalAddItem = (titleModal,titleInput,titleBtn,item,obj) =>{
         }
     })
 }
+const updateStatus = ()=>{
+    const items = document.querySelectorAll('.container_list_item');
+    let c = 1;
+    items.forEach(item =>{
+        item.setAttribute('id',`i-${c}`);
+        c++;
+    });
+}
 const newItem = (save,check,title,itemDate,key) =>{
     const container = document.querySelector('.container_list_items-container');
     const indexContainer = document.querySelector('.container_list_index');
@@ -337,7 +347,9 @@ const newItem = (save,check,title,itemDate,key) =>{
     }
     const item = document.createElement('DIV');
     item.classList.add('container_list_item');
+    item.classList.add(`${check}`);
     item.setAttribute('data-id',key);
+    item.setAttribute('id',`i-${container.childElementCount+1}`);
     const titleItem = document.createElement('H3');
     titleItem.classList.add('container_list_item_title');
     titleItem.textContent = title.trim();
@@ -367,6 +379,7 @@ const newItem = (save,check,title,itemDate,key) =>{
     const index = document.createElement('SPAN');
     index.setAttribute('id',check);
     index.classList.add('index');
+    index.classList.add(`i-${container.childElementCount+1}`);
     index.innerText = container.childElementCount+1;
     // append-child
     item.appendChild(titleItem);
@@ -398,20 +411,25 @@ const newItem = (save,check,title,itemDate,key) =>{
         let c = 1;
         indexes.forEach(newIndex =>{
             newIndex.textContent = c;
+            newIndex.classList.add(`i-${c}`);
             c++;
         });
-        const items = document.querySelector('.container_list_items-container')
+        const items = document.querySelector('.container_list_items-container');
         if (items.childElementCount == 0) msg('Ahora tu lista esta vacia');
     })
     verify.addEventListener('click',()=>{
-        index.id == "no-verify"
-            ? index.setAttribute('id','verify')
-            : index.setAttribute('id','no-verify');
+        const newIndex = document.querySelector(`.${item.id}`);
+        console.log(newIndex);
+        newIndex.id == "no-verify"
+            ? (newIndex.setAttribute('id','verify'),
+            item.classList.add('verify'))
+            : (newIndex.setAttribute('id','no-verify'),
+            item.classList.add('no-verify'));
         updateObj(db,parseFloat(key),{
             title,
             date: dateItem.textContent,
             key,
-            verify: index.id
+            verify: newIndex.id
         })
     })
     edit.addEventListener('click',()=>{

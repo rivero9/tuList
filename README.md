@@ -6,6 +6,7 @@
 
 ### 🌟 Características Principales
 
+* **PWA:** Una vez cargada la aplicación web por primera vez en el navegador, esta se encuentra disponible sin conexión a internet gracias a un Service Worker capaz de almacenar los archivos y datos en la caché del navegador, lo que permite una funcionalidad total incluso sin conexión
 * **Listas Categorizadas:** Organiza tus tareas en categorías personalizadas (ej. Compras, Trabajo, etc.) para mantener un control claro de tus responsabilidades.
 * **Gestión de Tareas Completa (CRUD):**
     * **Crear** nuevos elementos en cada lista.

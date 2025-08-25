@@ -36,8 +36,7 @@ body {
     background: var(--cDark);
     padding: 30px 0 0 0;
     z-index: 1000;
-    transform: translateX(110%);
-    transition: transform .2s ease-in;
+    display: none;
 }
 .nav_config_close {
     display: inline-block;
@@ -344,10 +343,12 @@ body {
     width: 16px;
     height: 16px;
 }
-.container_list_item:hover .container_list_item_date {
+.container_list_item:hover .container_list_item_date,
+.container_list_item.show-tools .container_list_item_date {
     opacity: 0;
 }
-.container_list_item:hover .container_list_item_tools {
+.container_list_item:hover .container_list_item_tools,
+.container_list_item.show-tools .container_list_item_tools {
     transform: translateX(0);
 }
 /* ------- add-item ------- */
@@ -403,7 +404,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     background: #25273acc;
     z-index: 100;
@@ -479,6 +480,16 @@ body {
     transform: translate(-250px,-2px);
     transition: transform 0.6s ease;
     z-index: 1000;
+}
+.label-input::before {
+  content: '';
+  display: inline-block;
+  width: 250px;
+  height: 100%;
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  border-bottom: 1px solid #fff;
 }
 .modal_create-item #input-title {
     background: transparent;

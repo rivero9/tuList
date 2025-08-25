@@ -120,17 +120,15 @@ const stopLoad = lC =>{
     container.removeChild(containerLoad);
     container.style.overflow = "visible";
 }
-
 // nav 
-const bars = document.getElementById('bars');
-bars.addEventListener('click',()=>{
-    const config = document.querySelector('.nav_config');
-    config.style.transform = "translateX(0)";
+const navMovil = document.querySelector('.nav_config');
+
+document.getElementById('bars').addEventListener('click',()=>{
+    navMovil.style.display = "inline-block";
 })
-const closeConfig = document.querySelector('.nav_config_close')
-closeConfig.addEventListener('click',()=>{
-    const config = document.querySelector('.nav_config');
-    config.style.transform = "translateX(110%)";
+
+document.querySelector('.nav_config_close').addEventListener('click',()=>{
+    navMovil.style.display = "none";
 })
 const newTheme = document.querySelectorAll('.change-theme');
 newTheme.forEach(option =>{
@@ -140,8 +138,7 @@ newTheme.forEach(option =>{
         theme.setAttribute('rel','stylesheet');
         theme.setAttribute('href',`styles/themes/${option.id}.css`);
         theme.setAttribute('id','theme');
-        const config = document.querySelector('.nav_config');
-        config.style.transform = "translateX(110%)";
+        navMovil.style.display = "hidden";
         document.head.appendChild(theme);
         const temaAntiguo = document.getElementById('theme');
         document.head.removeChild(temaAntiguo);
@@ -413,6 +410,9 @@ const newItem = (save,check,title,itemDate,key) =>{
             verify: index.id
         });
     }
+
+    item.addEventListener('click', () => item.classList.add('show-tools'));
+
     clear.addEventListener('click',()=>{
         clearObj(db,parseFloat(key));
         container.removeChild(item);
